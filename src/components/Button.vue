@@ -1,5 +1,5 @@
 <template>
-    <button @click="getPerson"
+    <button @click="addPerson"
             :style="{ background: color}"
             class="btn">{{ text }}</button>
 </template>
@@ -29,10 +29,10 @@
             }
         },
         methods: {
-            async getPerson(){
+            async addPerson(){
                 const res = await fetch("https://randomuser.me/api");
                 const { results } = await res.json();
-                console.log(results);
+                //console.log(results);
 
                 if(results.length > 0){
                     let person = {
@@ -44,13 +44,13 @@
                         age: results[0].dob.age + "yrs",
                         picture: results[0].picture.large,
                         dob: this.formatDate(results[0].dob.date),
-                        selected: true,
+                        selected: false,
                         street: results[0].location.street.number + " " + results[0].location.street.name,
                         city: results[0].location.city,
                         country: results[0].location.country,
                     }
 
-                    console.log(person);
+                    //console.log(person);
                     this.$emit('clicked', { person });
                 }
 

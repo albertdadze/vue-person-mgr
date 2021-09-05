@@ -1,8 +1,9 @@
 <template>
     <div v-if="!persons.length">No person available</div>
     <div :key="person.id" v-for="person in persons">
-        <Person :person="person" 
-           @delete-person="$emit('delete-person', person.id)" />
+        <Person :person="person"
+            @toggle-person="$emit('toggle-person', person.id)"
+            @delete-person="$emit('delete-person', person.id)" />
     </div>
 </template>
 
@@ -17,6 +18,6 @@
         components: {
             Person,
         },
-        emits: ['delete-person'],
+        emits: ['delete-person', 'toggle-person'],
     }
  </script>

@@ -1,5 +1,5 @@
 <template> 
-    <div :class="[person.selected ? 'selected': '','person']">
+    <div @dblclick="$emit('toggle-person', person.id)" :class="[person.selected ? 'selected': '','person']">
       <div class="row">
           <div class="col-sm-3 no-padding no-margin">
               <img :class="person.gender" 

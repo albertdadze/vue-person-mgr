@@ -3,7 +3,8 @@
     <Header @add-person="onAddPerson" title="Person Tracker" color="red" /> 
     <Persons
        :persons="persons"
-       @delete-person="onDeletePerson" />
+       @delete-person="onDeletePerson"
+       @toggle-person="onTogglePerson" />
  </div>
 </template>
 
@@ -29,7 +30,14 @@ export default defineComponent({
         this.persons.unshift(person);
       },
       onDeletePerson(id){
-        this.persons = this.persons.filter((person) => person.id !== id)
+        if(confirm('Are you sure you want to delete person?')){
+         this.persons = this.persons.filter((person) => person.id !== id)
+        }
+      },
+      onTogglePerson(id){
+        //console.log(id);
+        this.persons = this.persons.map((person) => 
+          person.id === id ? {...person, selected: !person.selected} : person);
       }
   }, 
   created(){

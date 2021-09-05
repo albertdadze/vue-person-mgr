@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1 :style="{ color: color}">{{ title }}</h1>        
-        <Button @clicked="onButtonClicked" text="Add Person" color="red" />
+        <Button @clicked="onAddPerson" text="Add Person" color="red" />
     </header>
     <hr style="border-top: 1px solid red;" />
 </template>
@@ -19,11 +19,12 @@
             Button,
         },
         methods: {
-            onButtonClicked({ person }){
+            onAddPerson({ person }){
                 //console.log(person);
                 this.$emit('add-person', { person })
             }
-        }
+        },
+        emits: ['add-person'],
     }
 </script>
 
