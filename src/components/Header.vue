@@ -10,7 +10,7 @@
     import Button from "./Button.vue";
 
     export default {
-        name: 'Header',
+        name: 'Header', 
         props: {
             title: String,
             color: String,

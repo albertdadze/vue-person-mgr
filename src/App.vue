@@ -98,5 +98,9 @@ export default defineComponent({
     display: block;
     width: 100%;
   }
+
+  [v-cloak]{
+    display: none;
+  }
 </style>
 
